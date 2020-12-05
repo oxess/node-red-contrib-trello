@@ -38,11 +38,7 @@ const stop  = (done) => { done(); }
 const start = (RED, node, config) => {
     let uri = '/trello-callback'+config.path+'/';
     RED.httpNode.get  (uri, (req, res, next) => { node.send({'payload' : req.body}); res.sendStatus(200); });
-    RED.httpNode.post (uri, (req, res, next) => {
-        node.log({uri, req, res});
-        node.send({'payload' : req.body});
-        res.sendStatus(200);
-    });
+    RED.httpNode.post (uri, (req, res, next) => { node.send({'payload' : req.body}); res.sendStatus(200); });
 }
 
 const input = (node, data, config, credentials) => {
