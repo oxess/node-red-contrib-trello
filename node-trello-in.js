@@ -45,7 +45,7 @@ const input = (node, data, config, credentials) => {
     let url  = 'https://api.trello.com/1/tokens/'+credentials.token+'/webhooks/?key='+credentials.key; 
     let json = {
         description: "Trello Webhook " + (config.name || node.id),
-        callbackURL: config.host + 'trello-callback'+config.path+'/',
+        callbackURL: credentials.host + 'trello-callback'+config.path+'/',
         idModel: config.model,
     }
     let req  = {
